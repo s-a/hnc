@@ -1,0 +1,38 @@
+{
+  "name": "hnc",
+  "version": "1.0.1",
+  "description": "just antother hacker news console client",
+  "main": "index.js",
+  "bin": {
+    "hn": "index.js"
+  },
+  "dependencies": {
+    "inquirer": "^1.0.2",
+    "colors": "^1.1.2",
+    "html-to-text": "^2.1.0",
+    "open": "^0.0.5",
+    "progress": "^1.1.8",
+    "unirest": "^0.4.2",
+    "to-markdown": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "bump": "npm version patch && git push && git push --tags && npm publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s-a/hnc.git"
+  },
+  "keywords": [
+    "hacker",
+    "news",
+    "news"
+  ],
+  "author": "s-a",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/s-a/hnc/issues"
+  },
+  "homepage": "https://github.com/s-a/hnc#readme"
+}
