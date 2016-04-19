@@ -7,6 +7,7 @@ var inquirer = require("inquirer");
 var colors = require("colors/safe");
 var htmlToText = require("html-to-text");
 var open = require("open");
+var moment = require("moment");
 
 var extractDomain = function(url) {
     var domain;
@@ -57,13 +58,18 @@ var browse = function(url, stories) {
 
 var processStories = function (stories) {
 
+	/*stories = stories.sort(function(a,b) {
+		return new Date(a.time*1000) < new Date(b.time*1000);
+	});*/
+
+	//console.log(stories[0]);return;
 	var choices = [];
 	for (var i = 0; i < stories.length; i++) {
 		var story = stories[i];
 		if (story && story.url){
 			var uri = extractDomain(story.url);
 			var item = {
-				name:colors.bold.cyan(story.title) + " " +  colors.cyan("(Score:" + story.score + " on " + uri + ")"),
+				name:colors.bold.cyan(story.title) + " " + colors.yellow(moment(new Date(story.time*1000)).fromNow()) + " " +  colors.cyan("(Score:" + story.score + " on " + uri + ")"),
 				value:story.url,
 				short:story.url
 			};
@@ -85,7 +91,7 @@ var processStories = function (stories) {
 };
 
 var fetchStories = function(done) {
-	var dataUrl = "https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty";
+	var dataUrl = "https://hacker-news.firebaseio.com/v0/newstories.json?print=pretty";
 	unirest.get(dataUrl).headers(headers).end(function (response) {
 		done(response.body);
 	});
