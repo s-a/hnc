@@ -1,6 +1,6 @@
 {
   "name": "hnc",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "just antother hacker news console client",
   "main": "index.js",
   "bin": {
